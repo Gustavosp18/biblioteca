@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros</title>
+</head>
+<body>
+    <h1>Cadastro de Livros</h1>
+    <input id="nomeLivro" placeholder="Nome" type="text">
+    <input id="autorLivro" placeholder="Autor" type="text">
+    <input id="anoLivro" placeholder="Ano" type="number">
+    <button onclick="adicionar()">Adicionar Livro</button>
+    <button onclick="mostrarLivros()">Mostrar Livros</button>
+    <button onclick="cadastrarUmLivro()">Cadastrar um Livro</button>
+    <script>
+        const biblioteca = [];
+
+        function adicionar() {
+            const nome = document.getElementById('nomeLivro').value;
+            const autor = document.getElementById('autorLivro').value;
+            const ano = document.getElementById('anoLivro').value;
+            const livro = { nome, autor, ano };
+            biblioteca.push(livro);
+            exibirQuantidadeLivros();
+        }
+
+        function mostrarLivros() {
+            if (biblioteca.length > 0) {
+                console.log("Livros cadastrados:");
+                biblioteca.forEach(livro => {
+                    console.log(`${livro.nome} - ${livro.autor} - ${livro.ano}`);
+                });
+            } else {
+                console.log("Nenhum livro cadastrado.");
+            }
+        }
+
+        function cadastrarUmLivro() {
+            const nome = prompt('Digite o nome do livro:');
+            const autor = prompt('Digite o autor do livro:');
+            const ano = prompt('Digite o ano do livro:');
+            const livro = { nome, autor, ano };
+            biblioteca.push(livro);
+            exibirQuantidadeLivros();
+        }
+
+        function exibirQuantidadeLivros() {
+            const quantidadeLivros = biblioteca.length;
+            console.log(`Quantidade de livros cadastrados: ${quantidadeLivros}`);
+        }
+    </script>
+</body>
+</html>
